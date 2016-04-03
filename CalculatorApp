@@ -1,0 +1,76 @@
+/*
+    Java Calculator by Silvia Rodriguez.
+    Java application that performs addition and multiplication calculations.
+*/    
+import java.util.Scanner;                                 // imports Scanner class which is in util folder inside the java folder
+                                                          // Scanner is a predefined class for taking inputs from user
+public class CalculatorApp                                // class declaration with one method
+{
+    public static void main (String args[])               // main method begins program execution
+    {
+        int result, choice;                               // declares variables
+        boolean exitFlag = false;                         // creates an exitFlag for case 4 and declared it false as while loop will be performed only if exitFlag is false
+
+        Scanner input = new Scanner( System.in );         // creates Scanner to obtain input from command window
+        Calculator myCalculator = new Calculator();       // creates a Calculator object and assigns it to myCalculator
+
+        while(!exitFlag)                                  // does while loop (recalls main menu over and over) except when exitFlag is true (such as in case 4)
+        {
+            System.out.print("Please choose one of the following options:\n [1]- Set numbers\n [2]- Add Numbers\n [3]- Multiply numbers\n [4]- Exit\n");   // prints main menu
+            choice = input.nextInt();                     // makes variable choice equal to the number inputed from main menu
+            switch(choice)                                // switch case
+            {
+                case 1:
+                    myCalculator.setNumbers();            // calls myCalculator's setNumbers method from Calculator class and hence, sets numbers inputed by user
+                    break;
+                case 2:
+                    result = myCalculator.performAddition();       // makes result the returned value from myCalculator's performAddition method from Calculator class
+                    System.out.println(result);                    // prints result
+                    break;
+                case 3:
+                    result = myCalculator.performMultiplication(); // makes result the returned value from myCalculator's performAddition method from Calculator class
+                    System.out.println(result);                    // prints result
+                    break;
+                case 4:
+                    System.out.println("Exit");                    // prints Exit
+                    exitFlag = true;                               // exitFlag is true, so while loop doesn't run again (exits main menu)
+                    break;
+                default:
+                    System.out.println("Invalid option");          // else if user inputs numbers other than 1,2,3 or 4 - message saying Invalid option
+                    break;
+            }
+        }   input.close();                                // ends while loop
+    }                                                     // ends main method
+}                                                         // ends class CalculatorApp
+===========================================================================================
+/*
+  Java calculator by Silvia Rodriguez
+ */
+import java.util.Scanner;                                      // imports Scanner class which is in util folder inside the java folder
+                                                               // Scanner is a predefined class for taking inputs from user
+
+class Calculator                                               // class declaration with three methods and two instance variables
+{
+    private int x,y;                                           // declares instance variables
+
+    private Scanner input = new Scanner( System.in );          // creates Scanner to obtain input from command window
+
+    void setNumbers()                                          // method which sets the numbers
+    {
+        System.out.print("Please input your first number:\n");
+        x = input.nextInt();                                   // makes variable x equal to the input set by user
+        System.out.print("Please input your second number:\n");
+        y = input.nextInt();                                   // makes variable y equal to the input set by user
+    }
+
+    int performAddition()                                      // method which performs addition operation
+    {
+        return x+y;
+    }
+
+    int performMultiplication()                                // method which performs addition operation
+    {
+        return x*y;
+    }
+}                                                              // ends class Calculator
+
